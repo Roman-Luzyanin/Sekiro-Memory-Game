@@ -1,0 +1,209 @@
+@font-face {
+	font-family: Sekiro;
+	src: url(./fonts/Sekiro.ttf);
+}
+
+*,*::after,*::before {box-sizing: border-box; margin: 0;}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+p {
+	margin: 20px;
+}
+
+.memoryGame {
+	width: 1300px;
+	height: 600px;
+	border: 1px solid red;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	padding-top: 50px;
+	overflow: hidden;
+	user-select: none;
+	background: no-repeat url(./assets/main_BG-1.png) right / cover;
+	position: relative;
+	border-radius: 10px;
+}
+
+.memoryGame::after {
+	content: "Sekiro Memory Game";
+	position: absolute;
+	top: 10px;
+	left: 250px;
+	font-size: 34px;
+	font-family: Sekiro;
+}
+
+.rivals {
+	width: 700px;
+	height: 380px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	position: relative;
+	transition: 1s;
+	column-gap: 40px;
+}
+
+.health {
+	width: 160px;
+	height: 20px;
+	border: 1px solid black;
+	border-radius: 10px;
+	overflow: hidden;
+	text-align: center;
+	line-height: 1.1;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	transition: 2s;
+}
+
+.hpStripe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	background: red;
+	height: inherit;
+	transition: 1s;
+}
+
+.enemy {
+	position: relative;
+	margin-right: 200px;
+}
+
+.hero {
+	margin-left: 30px;
+}
+
+.enemy.deathblow::after {
+	content: "";
+	position: absolute;
+	top: -20%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: radial-gradient(circle, red 3%, transparent 10%);
+}
+
+.hero img {
+	width: 140px;
+	height: 175px;
+}
+
+.enemy img {
+	position: relative;
+	margin-top: 10px;
+	width: 160px;
+	height: 200px;
+}
+
+.hero.hit img,
+.enemy.hit img {
+  animation: hitPulse 0.25s ease-out;
+}
+
+@keyframes hitPulse {
+  0%   { transform: scale(1); opacity: 1; }
+  40%  { transform: scale(0.99); opacity: 0.8; }
+  60%  {filter: brightness(1) sepia(1) hue-rotate(-20deg) saturate(3)}
+  80%  { transform: scale(1.01); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.cards {
+	width: 800px;
+	margin-right: 90px;
+	height: 190px;
+	padding-bottom: 10px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-evenly;
+}
+
+.card {
+	width: 120px;
+	height: 150px;
+	/* border: 1px solid black; */
+	border-radius: 10px;
+	background: no-repeat url(./assets/card_BG.png) top / cover;
+}
+
+.card img {
+	width: inherit;
+	height: inherit;
+	padding: 5px;
+	box-shadow: inset 0 0 2px red;
+	border-radius: 10px;
+}
+
+.messageRight {
+	text-align: center;
+	margin-bottom: 120px;
+	margin-right: 30px;
+	width: 400px;
+}
+
+.messageLeft {
+	margin-bottom: 120px;
+}
+
+.messageLeft button {
+	margin-bottom: 230px;
+	margin-left: 40px;
+}
+
+.messageLeft button,
+.messageRight button {
+	margin-top: 30px;
+	cursor: pointer;
+}
+
+.endMessage {
+	font-size: 24px;
+	line-height: 1;
+}
+
+.levelUP {
+	height: 25px;
+	animation: borderPulse 2s linear infinite;
+}
+
+@keyframes borderPulse {
+	0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 0, 0, 1); }
+	100% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
+
+	0% { border-color:  rgba(255, 255, 0, 1); }
+    50% { border-color:  rgba(255, 215, 0, 1); }
+	100% { border-color:  rgba(255, 255, 0, 1); }
+}
+
+.hero {
+	position: relative;
+}
+
+.reflection {
+	width: 60px;
+	height: 30px;
+	position: absolute;
+	top: 50px;
+	left: 120px;
+}
+
+.pain {
+	background: no-repeat url(./assets/pain.png) center / contain;
+}
+
+.smile {
+	background: no-repeat url(./assets/smile.png) center / contain;
+}
